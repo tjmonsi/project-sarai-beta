@@ -1,6 +1,8 @@
 export default (React, PageCtx, FlowRouter, mount) => {
-  FlowRouter('/', () => {
-    mount(PageCtx, {
-    });
+  FlowRouter.route('/', {
+    action: () => {
+      mount(PageCtx, {
+      });
+    }
   });
 };
