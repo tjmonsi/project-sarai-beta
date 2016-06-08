@@ -2,7 +2,8 @@
   "name": "project-sarai-beta",
   "private": true,
   "scripts": {
-    "start": "meteor run"
+    "start": "meteor run",
+    "start-c9": "meteor --settings settings.json --port $PORT"
   },
   "dependencies": {
     "classnames": "^2.2.5",

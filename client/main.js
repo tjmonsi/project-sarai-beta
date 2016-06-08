@@ -1,22 +1,12 @@
-import { Template } from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var';
+// Import React and JS
+import '/node_modules/material-design-lite/material.js';
+// import '/node_modules/mdl-ext/lib/mdl-ext.js';
+import {createApp} from 'mantra-core';
+import {initContext} from './configs/context';
+import coreModule from './modules/main';
 
-import './main.html';
+const context = initContext();
+const app = createApp(context);
 
-Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
-});
-
-Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
-  },
-});
-
-Template.hello.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
-  },
-});
+app.loadModule(coreModule);
+app.init();

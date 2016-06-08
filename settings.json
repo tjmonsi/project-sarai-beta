@@ -1,0 +1,11 @@
+{
+  "public": {},
+  "captcha": {
+    "siteKey": "6LdCNBITAAAAALjtGKx6wRuRrsX-Gd6ub_djTWRL",
+    "secret": "6LdCNBITAAAAAL7vdMBh-kd6xo4gq3xzDpVblUS2"
+  },
+  "kadira": {
+    "appId": "LopemRoAre9b7gDx2",
+    "appSecret": "9f5f4152-79ac-44c6-b871-3abae7a48917"
+  }
+}
