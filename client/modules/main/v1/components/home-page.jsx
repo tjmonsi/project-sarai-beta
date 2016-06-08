@@ -2,9 +2,14 @@ import React from 'react';
 
 class HomePage extends React.Component {
   render() {
+    const {header, banner, content, footer} = this.props;
+
     return (
       <div className="">
-        Hello World
+        {header}
+        {banner}
+        {content}
+        {footer}
       </div>
     );
   }
