@@ -1,0 +1,263 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'random-js',
+1 verbose cli   '--save' ]
+2 info using npm@2.15.1
+3 info using node@v0.12.14
+4 verbose node symlink /usr/bin/node
+5 verbose install initial load of /home/monina/SARAI/codes/project-sarai-beta/package.json
+6 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/babel-core/package.json
+7 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/babel-eslint/package.json
+8 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/babel-plugin-react-require/package.json
+9 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/babel-polyfill/package.json
+10 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/babel-preset-es2015/package.json
+11 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/babel-preset-react/package.json
+12 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/babel-preset-stage-2/package.json
+13 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/chai/package.json
+14 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/classnames/package.json
+15 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/enzyme/package.json
+16 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/eslint/package.json
+17 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/eslint-plugin-meteor/package.json
+18 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/eslint-plugin-react/package.json
+19 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/mantra-core/package.json
+20 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/marked/package.json
+21 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/material-design-icons/package.json
+22 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/material-design-lite/package.json
+23 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/meteor-node-stubs/package.json
+24 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/mocha/package.json
+25 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/page/package.json
+26 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/qs/package.json
+27 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/react/package.json
+28 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/react-addons-test-utils/package.json
+29 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/react-dom/package.json
+30 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/react-google-maps/package.json
+31 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/react-komposer/package.json
+32 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/react-markdown/package.json
+33 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/react-mounter/package.json
+34 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/react-redux/package.json
+35 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/react-simple-di/package.json
+36 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/redux/package.json
+37 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/redux-devtools/package.json
+38 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/sinon/package.json
+39 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/slug/package.json
+40 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/snyk/package.json
+41 verbose installManyTop reading scoped package data from /home/monina/SARAI/codes/project-sarai-beta/node_modules/underscore/package.json
+42 info package.json mocha@2.5.3 No README data
+43 info package.json slug@0.9.1 No license field.
+44 info package.json babel-polyfill@6.9.1 No description
+45 verbose readDependencies loading dependencies from /home/monina/SARAI/codes/project-sarai-beta/package.json
+46 silly cache add args [ 'random-js', null ]
+47 verbose cache add spec random-js
+48 silly cache add parsed spec { raw: 'random-js',
+48 silly cache add   scope: null,
+48 silly cache add   name: 'random-js',
+48 silly cache add   rawSpec: '',
+48 silly cache add   spec: 'latest',
+48 silly cache add   type: 'tag' }
+49 silly addNamed random-js@latest
+50 verbose addNamed "latest" is being treated as a dist-tag for random-js
+51 info addNameTag [ 'random-js', 'latest' ]
+52 silly mapToRegistry name random-js
+53 silly mapToRegistry using default registry
+54 silly mapToRegistry registry https://registry.npmjs.org/
+55 silly mapToRegistry data { raw: 'random-js',
+55 silly mapToRegistry   scope: null,
+55 silly mapToRegistry   name: 'random-js',
+55 silly mapToRegistry   rawSpec: '',
+55 silly mapToRegistry   spec: 'latest',
+55 silly mapToRegistry   type: 'tag' }
+56 silly mapToRegistry uri https://registry.npmjs.org/random-js
+57 verbose addNameTag registry:https://registry.npmjs.org/random-js not in flight; fetching
+58 verbose request uri https://registry.npmjs.org/random-js
+59 verbose request no auth needed
+60 info attempt registry request try #1 at 8:25:52 PM
+61 verbose request id c121f62a4225444e
+62 http request GET https://registry.npmjs.org/random-js
+63 http 200 https://registry.npmjs.org/random-js
+64 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+64 verbose headers   etag: '"IIQICLLDLD1JE6G51Q5UOMX3"',
+64 verbose headers   'content-type': 'application/json',
+64 verbose headers   'content-encoding': 'gzip',
+64 verbose headers   'cache-control': 'max-age=300',
+64 verbose headers   'content-length': '6983',
+64 verbose headers   'accept-ranges': 'bytes',
+64 verbose headers   date: 'Wed, 08 Jun 2016 12:25:53 GMT',
+64 verbose headers   via: '1.1 varnish',
+64 verbose headers   age: '262',
+64 verbose headers   connection: 'keep-alive',
+64 verbose headers   'x-served-by': 'cache-sjc3134-SJC',
+64 verbose headers   'x-cache': 'HIT',
+64 verbose headers   'x-cache-hits': '1',
+64 verbose headers   'x-timer': 'S1465388753.652027,VS0,VE0',
+64 verbose headers   vary: 'Accept-Encoding' }
+65 silly get cb [ 200,
+65 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+65 silly get     etag: '"IIQICLLDLD1JE6G51Q5UOMX3"',
+65 silly get     'content-type': 'application/json',
+65 silly get     'content-encoding': 'gzip',
+65 silly get     'cache-control': 'max-age=300',
+65 silly get     'content-length': '6983',
+65 silly get     'accept-ranges': 'bytes',
+65 silly get     date: 'Wed, 08 Jun 2016 12:25:53 GMT',
+65 silly get     via: '1.1 varnish',
+65 silly get     age: '262',
+65 silly get     connection: 'keep-alive',
+65 silly get     'x-served-by': 'cache-sjc3134-SJC',
+65 silly get     'x-cache': 'HIT',
+65 silly get     'x-cache-hits': '1',
+65 silly get     'x-timer': 'S1465388753.652027,VS0,VE0',
+65 silly get     vary: 'Accept-Encoding' } ]
+66 verbose get saving random-js to /home/monina/.npm/registry.npmjs.org/random-js/.cache.json
+67 verbose correctMkdir /home/monina/.npm correctMkdir not in flight; initializing
+68 silly addNameTag next cb for random-js with tag latest
+69 silly addNamed random-js@1.0.8
+70 verbose addNamed "1.0.8" is a plain semver version for random-js
+71 silly mapToRegistry name random-js
+72 silly mapToRegistry using default registry
+73 silly mapToRegistry registry https://registry.npmjs.org/
+74 silly mapToRegistry data { raw: 'random-js',
+74 silly mapToRegistry   scope: null,
+74 silly mapToRegistry   name: 'random-js',
+74 silly mapToRegistry   rawSpec: '',
+74 silly mapToRegistry   spec: 'latest',
+74 silly mapToRegistry   type: 'tag' }
+75 silly mapToRegistry uri https://registry.npmjs.org/random-js
+76 verbose addRemoteTarball https://registry.npmjs.org/random-js/-/random-js-1.0.8.tgz not in flight; adding
+77 verbose addRemoteTarball [ 'https://registry.npmjs.org/random-js/-/random-js-1.0.8.tgz',
+77 verbose addRemoteTarball   '968fd689a6f25d6c0aac766283de2f688c9c190a' ]
+78 info retry fetch attempt 1 at 8:25:53 PM
+79 info attempt registry request try #1 at 8:25:53 PM
+80 http fetch GET https://registry.npmjs.org/random-js/-/random-js-1.0.8.tgz
+81 http fetch 200 https://registry.npmjs.org/random-js/-/random-js-1.0.8.tgz
+82 silly fetchAndShaCheck shasum 968fd689a6f25d6c0aac766283de2f688c9c190a
+83 verbose addTmpTarball /tmp/user/0/npm-4732-c811fcec/registry.npmjs.org/random-js/-/random-js-1.0.8.tgz not in flight; adding
+84 verbose addTmpTarball already have metadata; skipping unpack for random-js@1.0.8
+85 verbose correctMkdir /home/monina/.npm correctMkdir not in flight; initializing
+86 silly cache afterAdd random-js@1.0.8
+87 verbose afterAdd /home/monina/.npm/random-js/1.0.8/package/package.json not in flight; writing
+88 verbose correctMkdir /home/monina/.npm correctMkdir not in flight; initializing
+89 verbose afterAdd /home/monina/.npm/random-js/1.0.8/package/package.json written
+90 silly install resolved [ { name: 'random-js',
+90 silly install resolved     description: 'A mathematically correct random number generator library for JavaScript.',
+90 silly install resolved     version: '1.0.8',
+90 silly install resolved     author: { name: 'Cameron Kenneth Knight', email: 'ckknight@gmail.com' },
+90 silly install resolved     keywords: [ 'random' ],
+90 silly install resolved     homepage: 'https://github.com/ckknight/random-js',
+90 silly install resolved     bugs: { url: 'https://github.com/ckknight/random-js/issues' },
+90 silly install resolved     license: 'MIT',
+90 silly install resolved     repository: { type: 'git', url: 'git://github.com/ckknight/random-js.git' },
+90 silly install resolved     main: 'lib/random',
+90 silly install resolved     devDependencies:
+90 silly install resolved      { karma: '~0.10.9',
+90 silly install resolved        'karma-chrome-launcher': '~0.1.2',
+90 silly install resolved        'karma-coffee-preprocessor': '~0.1.2',
+90 silly install resolved        'karma-coverage': '~0.1.5',
+90 silly install resolved        'karma-firefox-launcher': '~0.1.3',
+90 silly install resolved        'karma-html2js-preprocessor': '~0.1.0',
+90 silly install resolved        'karma-jasmine': '~0.1.5',
+90 silly install resolved        'karma-phantomjs-launcher': '~0.1.1',
+90 silly install resolved        'karma-requirejs': '~0.2.1',
+90 silly install resolved        'karma-script-launcher': '~0.1.0',
+90 silly install resolved        requirejs: '~2.1.10' },
+90 silly install resolved     scripts:
+90 silly install resolved      { test: 'jasmine-node lib/random.js spec/',
+90 silly install resolved        uglify: 'uglifyjs lib/random.js -o lib/random.min.js -m -c' },
+90 silly install resolved     testling: { files: 'spec/*.js' },
+90 silly install resolved     gitHead: '8a51f321c1fb1725a593fec59299af6ad7118631',
+90 silly install resolved     _id: 'random-js@1.0.8',
+90 silly install resolved     _shasum: '968fd689a6f25d6c0aac766283de2f688c9c190a',
+90 silly install resolved     _from: 'random-js@latest',
+90 silly install resolved     _npmVersion: '2.14.2',
+90 silly install resolved     _nodeVersion: '4.0.0',
+90 silly install resolved     _npmUser: { name: 'ckknight', email: 'ckknight@gmail.com' },
+90 silly install resolved     dist:
+90 silly install resolved      { shasum: '968fd689a6f25d6c0aac766283de2f688c9c190a',
+90 silly install resolved        tarball: 'https://registry.npmjs.org/random-js/-/random-js-1.0.8.tgz' },
+90 silly install resolved     maintainers: [ [Object] ],
+90 silly install resolved     directories: {},
+90 silly install resolved     _resolved: 'https://registry.npmjs.org/random-js/-/random-js-1.0.8.tgz' } ]
+91 info install random-js@1.0.8 into /home/monina/SARAI/codes/project-sarai-beta
+92 info installOne random-js@1.0.8
+93 verbose installOne of random-js to /home/monina/SARAI/codes/project-sarai-beta not in flight; installing
+94 verbose correctMkdir /home/monina/.npm/_locks correctMkdir not in flight; initializing
+95 verbose lock using /home/monina/.npm/_locks/random-js-f509e0ab4950b39d.lock for /home/monina/SARAI/codes/project-sarai-beta/node_modules/random-js
+96 silly install write writing random-js 1.0.8 to /home/monina/SARAI/codes/project-sarai-beta/node_modules/random-js
+97 verbose unbuild node_modules/random-js
+98 silly gentlyRm /home/monina/SARAI/codes/project-sarai-beta/node_modules/random-js is being purged from base /home/monina/SARAI/codes/project-sarai-beta
+99 verbose gentlyRm don't care about contents; nuking /home/monina/SARAI/codes/project-sarai-beta/node_modules/random-js
+100 verbose tar unpack /home/monina/.npm/random-js/1.0.8/package.tgz
+101 verbose tar unpacking to /home/monina/SARAI/codes/project-sarai-beta/node_modules/random-js
+102 silly gentlyRm /home/monina/SARAI/codes/project-sarai-beta/node_modules/random-js is being purged
+103 verbose gentlyRm don't care about contents; nuking /home/monina/SARAI/codes/project-sarai-beta/node_modules/random-js
+104 silly gunzTarPerm modes [ '755', '644' ]
+105 silly gunzTarPerm extractEntry package.json
+106 silly gunzTarPerm extractEntry .npmignore
+107 silly gunzTarPerm extractEntry README.md
+108 silly gunzTarPerm extractEntry LICENSE
+109 silly gunzTarPerm extractEntry karma.conf.js
+110 silly gunzTarPerm extractEntry bower.json
+111 silly gunzTarPerm extractEntry benchmark/bool.js
+112 silly gunzTarPerm extractEntry benchmark/engines.js
+113 silly gunzTarPerm extractEntry benchmark/integer.js
+114 silly gunzTarPerm extractEntry benchmark/real.js
+115 silly gunzTarPerm extractEntry CHANGELOG.md
+116 silly gunzTarPerm extractEntry lib/random.js
+117 silly gunzTarPerm extractEntry lib/random.min.js
+118 silly gunzTarPerm extractEntry spec/RandomSpec.js
+119 silly gunzTarPerm extractEntry spec/engines.browserCryptoSpec.js
+120 silly gunzTarPerm extractEntry spec/engines.mt19937Spec.js
+121 silly gunzTarPerm extractEntry spec/engines.nativeMathSpec.js
+122 silly gunzTarPerm extractEntry spec/dieSpec.js
+123 silly gunzTarPerm extractEntry spec/integerSpec.js
+124 silly gunzTarPerm extractEntry spec/pickSpec.js
+125 silly gunzTarPerm extractEntry spec/pickerSpec.js
+126 silly gunzTarPerm extractEntry spec/realSpec.js
+127 silly gunzTarPerm extractEntry spec/sampleSpec.js
+128 silly gunzTarPerm extractEntry spec/diceSpec.js
+129 silly gunzTarPerm extractEntry spec/shuffleSpec.js
+130 silly gunzTarPerm extractEntry spec/dateSpec.js
+131 silly gunzTarPerm extractEntry spec/stringSpec.js
+132 silly gunzTarPerm extractEntry spec/boolSpec.js
+133 silly gunzTarPerm extractEntry spec/uuid4Spec.js
+134 silly gunzTarPerm extractEntry spec/hexSpec.js
+135 silly gunzTarPerm extractEntry .travis.yml
+136 silly gunzTarPerm extractEntry test/engines.browserCryptoSpec.js
+137 verbose write writing to /home/monina/SARAI/codes/project-sarai-beta/node_modules/random-js/package.json
+138 info preinstall random-js@1.0.8
+139 verbose readDependencies loading dependencies from /home/monina/SARAI/codes/project-sarai-beta/node_modules/random-js/package.json
+140 verbose readDependencies loading dependencies from /home/monina/SARAI/codes/project-sarai-beta/node_modules/random-js/package.json
+141 silly install resolved []
+142 verbose about to build /home/monina/SARAI/codes/project-sarai-beta/node_modules/random-js
+143 info build /home/monina/SARAI/codes/project-sarai-beta/node_modules/random-js
+144 info linkStuff random-js@1.0.8
+145 silly linkStuff random-js@1.0.8 has /home/monina/SARAI/codes/project-sarai-beta/node_modules as its parent node_modules
+146 verbose linkBins random-js@1.0.8
+147 verbose linkMans random-js@1.0.8
+148 verbose rebuildBundles random-js@1.0.8
+149 info install random-js@1.0.8
+150 info postinstall random-js@1.0.8
+151 verbose unlock done using /home/monina/.npm/_locks/random-js-f509e0ab4950b39d.lock for /home/monina/SARAI/codes/project-sarai-beta/node_modules/random-js
+152 verbose validateInstall loading /home/monina/SARAI/codes/project-sarai-beta/package.json for validation
+153 verbose stack Error: The package eslint@2.11.1 does not satisfy its siblings' peerDependencies requirements!
+153 verbose stack     at /usr/lib/node_modules/npm/lib/install.js:125:32
+153 verbose stack     at /usr/lib/node_modules/npm/lib/install.js:268:7
+153 verbose stack     at /usr/lib/node_modules/npm/node_modules/read-installed/read-installed.js:142:5
+153 verbose stack     at /usr/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+153 verbose stack     at cb (/usr/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+153 verbose stack     at /usr/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+153 verbose stack     at cb (/usr/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+153 verbose stack     at /usr/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+153 verbose stack     at cb (/usr/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+153 verbose stack     at /usr/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+154 verbose cwd /home/monina/SARAI/codes/project-sarai-beta
+155 error Linux 3.16.0-71-generic
+156 error argv "/usr/bin/node" "/usr/bin/npm" "install" "random-js" "--save"
+157 error node v0.12.14
+158 error npm  v2.15.1
+159 error code EPEERINVALID
+160 error peerinvalid The package eslint@2.11.1 does not satisfy its siblings' peerDependencies requirements!
+160 error peerinvalid Peer eslint-plugin-meteor@1.7.0 wants eslint@>=0.8.0
+160 error peerinvalid Peer babel-eslint@5.0.4 wants eslint@<2.3.0
+161 verbose exit [ 1, true ]

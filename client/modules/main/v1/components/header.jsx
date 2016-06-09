@@ -5,6 +5,7 @@ class Header extends React.Component {
   constructor() {
     super()
     this.renderLinks = this.renderLinks.bind(this)
+    this.renderSubLinks = this.renderSubLinks.bind(this)
   }
   componentDidMount() {
     if (componentHandler) {
@@ -17,6 +18,23 @@ class Header extends React.Component {
     }
   }
 
+  renderSubLink(subLinks) {
+    return subLinks.map((link, key) => {
+      return (
+        <li key={key} className="mdl-menu__item">{link.label}</li>
+      )
+    })
+  }
+
+  renderSubLinks(label, subLinks) {
+    console.log(subLinks)
+    return (
+      <ul className="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" htmlFor={`${label}-nav-link`}>
+        {this.renderSubLink(subLinks)}
+      </ul>
+    )
+  }
+
   renderLinks() {
     const {getHeaderLinks} = this.props
     const headerLinks = getHeaderLinks()
@@ -25,10 +43,14 @@ class Header extends React.Component {
 
     return headerLinks.map((link, key) => {
       return (
-        <div className={linkCell} key={key}>
-          <a className="main-header-link" href={link.href}>{link.label}</a>
-        </div>
-      )
+          <div className={linkCell} key={key}>
+            <button id={`${link.label}-nav-link`} className="mdl-button main-header-link">
+              <span>{link.label}</span>
+            </button>
+
+            {link.subLinks ? this.renderSubLinks(link.label, link.subLinks) : ''}
+          </div>
+        )
     })
   }
 

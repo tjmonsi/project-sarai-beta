@@ -4,18 +4,15 @@ export default {
     return [
       {
         label: 'Home',
-        href: '/',
-        hasSubLinks: false
+        href: '/'
       },
       {
         label: 'About Us',
-        href: '/about',
-        hasSubLinks: false
+        href: '/about'
       },
       {
         label: 'Explore',
         href: '',
-        hasSubLinks: true,
         subLinks: [
           {
             label: 'Suitability Maps',
@@ -29,19 +26,59 @@ export default {
       },
       {
         label: 'Planting Dates',
-        href: '',
-        hasSubLinks: false
+        href: ''
       },
       {
         label: 'DSS',
         href: '',
-        hasSubLinks: true,
       },
       {
         label: 'Get Involved',
-        href: '',
-        hasSubLinks: true,
+        href: ''
       },
     ]
+  },
+
+  getNavLinks() {
+
+    return [
+      {
+        url: '/',
+        name: 'Link 1'
+      },
+      {
+        url: '/',
+        name: 'Link 2'
+      },
+      {
+        url: '/atomic-design',
+        name: 'Link 3'
+      },
+      {
+        url: '#',
+        name: 'Link 4',
+        links: [
+          {
+            url: '/',
+            name: 'Link 1'
+          },
+          {
+            url: '/',
+            name: 'Link 2'
+          },
+          {
+            url: '/atomic-design',
+            name: 'Link 3'
+          }
+        ]
+      },
+      {
+        url: '/',
+        name: 'Link 5',
+        actionHandler: () => {
+          alert('Pink 5');
+        }
+      }
+    ];
   }
 }

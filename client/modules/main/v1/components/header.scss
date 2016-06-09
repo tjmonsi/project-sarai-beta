@@ -1,10 +1,13 @@
-a.main-header-link {
+button.main-header-link {
   color: #424242;
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
   text-decoration: none;
+  background-color: white;
 
 }
 
-a.main-header-link:hover {
+button.main-header-link:hover,
+button.main-header-link:active {
   color: #4CAF50;
+  background-color: white;
 }
