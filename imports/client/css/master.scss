@@ -10,5 +10,4 @@ $secondary-text-color: #727272 !important;
 $divider-color:        #B6B6B6 !important;
 $primary-background-color: #FFFFFF !important;
 
-@import '../../../node_modules/material-design-lite/material.css';
-@import './modules/comp-lib/v2/index.scss';
+@import './../js/modules/comp-lib/v2/index.scss';
