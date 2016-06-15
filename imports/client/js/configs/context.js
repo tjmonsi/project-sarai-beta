@@ -1,4 +1,4 @@
-import * as Collections from '/lib/collections';
+import * as Collections from '/imports/lib/collections';
 import {mount} from 'react-mounter';
 import {Meteor} from 'meteor/meteor';
 import {Accounts} from 'meteor/accounts-base';
