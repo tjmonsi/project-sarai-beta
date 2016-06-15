@@ -2,14 +2,10 @@ import React from 'react';
 import classNames from 'classnames';
 import {classList, prefix} from './../../libs';
 
-export class CLGrid extends React.Component {
-  renderCell(child, column, size, key) {
-    const {
-      classes,
-      addCellClasses,
-      forceSingleColumnPhone,
-    } = this.props;
-    const defaultClass = `${prefix}-cell`;
+class GeneralGrid extends React.Component {
+  renderSection(section, size, column, key) {
+    const {classes, optionalClasses} = this.props;
+    const suffix = `${prefix}-general-grid-cell`;
     const className = classNames(
       'mdl-cell',
       {
@@ -24,8 +20,7 @@ export class CLGrid extends React.Component {
           !(size % 4 === 1 && key === size - 1) &&
           !(size % 4 === 3 && key === size - 2),
         'mdl-cell--4-col-tablet': column >= 2,
-        'mdl-cell--2-col-phone': column >= 2 && !forceSingleColumnPhone,
-        'mdl-cell--4-col-phone': column >= 2 && forceSingleColumnPhone,
+        'mdl-cell--2-col-phone': column >= 2,
         'mdl-cell--3-offset-desktop':
           (column === 2 && size % 2 === 1 && key === size - 1) ||
           (column === 4 && size % 4 === 2 && key === size - 2),
@@ -37,59 +32,59 @@ export class CLGrid extends React.Component {
         'mdl-cell--2-offset-tablet': column >= 2 && size % 2 === 1 && key === size - 1,
         'mdl-cell--1-offset-phone': column >= 2 && size % 2 === 1 && key === size - 1
       },
-      defaultClass,
-      classList(classes, defaultClass),
-      classList(addCellClasses, defaultClass)
+      suffix,
+      classList(classes, suffix),
+      classList(optionalClasses, suffix)
     );
-    const attributes = {
-      className,
-      key
-    };
     return (
-      <div {...attributes} >
-        { React.cloneElement(child, {classes}) }
+      <div
+        className = {className}
+        key = {key}
+      >
+        {section && typeof section === 'function' ? section(classes) : null}
       </div>
     );
   }
-  renderGrid(children, columns) {
-    let index = 0;
-    const size = React.Children.count(children);
-    return React.Children.map(this.props.children, child => {
-      return this.renderCell(child, columns, size, index++);
+  renderGrid(columns, sections) {
+    if (typeof sections === 'function') {
+      return this.renderSection(sections, 1, 0);
+    } else if (!sections) {
+      return null;
+    }
+    return sections.map((section, key) => {
+      return this.renderSection(section, sections.length, columns, key);
     });
   }
   render() {
     const {
-      hideOnLargeScreen,
-      hideOnSmallScreen,
-      noSpacing = false,
+      noSpacing,
       columns = 1,
+      sections,
       classes,
-      addClasses,
-      id,
-      children
+      optionalClasses,
+      id
     } = this.props;
     const maxColumns = columns >= 4 ? 4 : columns;
-    const defaultClass = `${prefix}-grid`;
+    const elemId = id && typeof id === 'string' ? `general-grid-${id}` : 'general-grid-default';
+    const suffix = `${prefix}-general-grid`;
     const className = classNames(
       'mdl-grid',
       {
-        'mdl-grid--no-spacing': noSpacing,
-        'mdl-layout--small-screen-only': hideOnLargeScreen,
-        'mdl-layout--large-screen-only': hideOnSmallScreen
+        'mdl-grid--no-spacing': noSpacing
       },
-      defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      suffix,
+      classList(classes, suffix),
+      classList(optionalClasses, suffix)
     );
-    const attributes = {
-      className,
-      id
-    };
     return (
-      <div {...attributes} >
-        { this.renderGrid(children, maxColumns) }
+      <div
+        className={className}
+        id = {elemId}
+      >
+        {this.renderGrid(maxColumns, sections)}
       </div>
     );
   }
 }
+
+export default GeneralGrid;

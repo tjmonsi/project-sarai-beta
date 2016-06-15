@@ -1,7 +1,8 @@
 @import './../prefix';
-@import 'src/css/palette.scss';
 
-.#{$prefix}-button {}
+.#{$prefix}-button {
+
+}
 
 .#{$prefix}-button-primary {
   background-color: $primary-color;

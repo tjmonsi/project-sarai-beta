@@ -1,23 +1,20 @@
 import React from 'react';
 import classNames from 'classnames';
-import {CLButton} from './../atoms';
 import {classList, prefix} from './../../libs';
 
-export class CLForm extends React.Component {
+class Form extends React.Component {
   constructor() {
     super();
     this.sections = {};
     this.data = {};
     this.onChangeHandler = this.onChangeHandler.bind(this);
-    this.inputRef = this.inputRef.bind(this);
-  }
-  inputRef(c, name) {
-    this.sections[name] = c;
   }
   onChangeHandler(value, name, event) {
-    const {onChangeDispatch = () => {}} = this.props;
+    const {onChangeDispatch} = this.props;
     this.data[name] = value;
     onChangeDispatch(this.data);
+    // console.log(value, element, name, event);
+    // console.log(this.sections[name].getValue())
   }
   renderSections() {
     const {data = {}, sections, classes} = this.props;
@@ -37,40 +34,30 @@ export class CLForm extends React.Component {
   render() {
     const {
       classes,
-      addClasses,
-      shadow,
-      id,
-      children,
-      data = {}
+      optionalClasses,
+      shadow
     } = this.props;
-    const defaultClass = `${prefix}-form`;
+    const suffix = `${prefix}-form`;
     const className = classNames(
       shadow && !isNaN(shadow) && (
-        parseInt(shadow, 10) === 2 ||
-        parseInt(shadow, 10) === 3 ||
-        parseInt(shadow, 10) === 4 ||
-        parseInt(shadow, 10) === 8 ||
+        parseInt(shadow, 10) === 2,
+        parseInt(shadow, 10) === 3,
+        parseInt(shadow, 10) === 4,
+        parseInt(shadow, 10) === 8,
         parseInt(shadow, 10) === 16
-      ) ? `mdl-shadow--${shadow}dp` : null,
-      defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      ) ? `mdl-shadow--${shadow}p` : null,
+      suffix,
+      classList(classes, suffix),
+      classList(optionalClasses, suffix)
     );
-    const attribtues = {
-      className,
-      id
-    };
     return (
-      <div {...attribtues} >
-        {
-          React.Children.map(children, child => (React.cloneElement(child, {
-            classes,
-            inputRef: this.inputRef,
-            onChangeHandler: this.onChangeHandler,
-            data
-          })))
-        }
+      <div
+        className={className}
+      >
+        {this.renderSections()}
       </div>
     );
   }
 }
+
+export default Form;

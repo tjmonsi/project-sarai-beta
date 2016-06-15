@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import random from 'random-js';
 import {classList, prefix} from './../../libs';
 
-export class CLToggle extends React.Component {
+class Toggle extends React.Component {
   constructor() {
     super();
     this.getElement = this.getElement.bind(this);
@@ -11,29 +11,6 @@ export class CLToggle extends React.Component {
     this.getInputValue = this.getInputValue.bind(this);
     this.setValue = this.setValue.bind(this);
     this.setInputValue = this.setInputValue.bind(this);
-    this.onChangeHandler = this.onChangeHandler.bind(this);
-    this.checkValue = this.checkValue.bind(this);
-    this.updateForm = this.updateForm.bind(this);
-  }
-  componentDidMount() {
-    this.updateForm();
-  }
-  componentDidUpdate() {
-    this.updateForm();
-  }
-  updateForm() {
-    const {
-      data,
-      name,
-      inputRef = () => {},
-      checked,
-      value
-    } = this.props;
-    inputRef(this, name);
-    if (checked || data[name] || data[name] === value) {
-      this.checkValue(true);
-    }
-    this.onChangeHandler();
   }
   getElement() {
     return this.toggle;
@@ -41,33 +18,14 @@ export class CLToggle extends React.Component {
   getValue() {
     return this.toggle.checked;
   }
-  checkValue(value) {
-    if (!this.toggle.MaterialCheckbox) {
-      this.toggle.addEventListener('mdl-componentupgraded', () => {
-        if (value) {
-          this.toggle.MaterialCheckbox.checked();
-        } else {
-          this.toggle.MaterialCheckbox.unchecked();
-        }
-      });
-    } else if (value) {
-      this.toggle.MaterialCheckbox.checked();
-    } else {
-      this.toggle.MaterialCheckbox.unchecked();
-    }
-  }
   setValue(value) {
-    this.checkValue(value);
+    this.toggle.checked = Boolean(value);
   }
   setInputValue(value) {
     this.toggle.value = value;
   }
   getInputValue() {
     return this.toggle.value;
-  }
-  onChangeHandler(e) {
-    const {onChangeHandler = () => {}, name} = this.props;
-    onChangeHandler(this.toggle.checked, name, e, this.toggle);
   }
   renderLabel(type, label, materialIcon) {
     const className = classNames(
@@ -96,22 +54,20 @@ export class CLToggle extends React.Component {
   render() {
     const r = random();
     const {
+        id = r.string(10),
         type = 'checkbox',
+        classes,
+        optionalClasses,
         label,
         name,
         value,
         materialIcon,
-        hideOnLargeScreen,
-        hideOnSmallScreen,
-        inputRef = () => {},
-        data = {},
-        classes,
-        addClasses,
-        id = r.string(10),
+        checked
     } = this.props;
+    // const r = random();
 
-    const defaultClass = `${prefix}-${type}`;
-    const idFor = `${defaultClass}-${id}-${r.string(10)}`;
+    const suffix = `${prefix}-${type}`;
+    const idFor = `${suffix}-${id && typeof id === 'string' ? id : null}-${r.string(10)}`;
     const className = classNames(
       {
         'mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect':
@@ -121,13 +77,11 @@ export class CLToggle extends React.Component {
         'mdl-icon-toggle mdl-js-icon-toggle mdl-js-ripple-effect':
         type && type === 'toggle' && materialIcon,
         'mdl-switch mdl-js-switch mdl-js-ripple-effect':
-        type && type === 'switch',
-        'mdl-layout--small-screen-only': hideOnLargeScreen,
-        'mdl-layout--large-screen-only': hideOnSmallScreen
+        type && type === 'switch'
       },
-      defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      suffix,
+      classList(classes, suffix),
+      classList(optionalClasses, suffix)
     );
 
     const inputClassName = classNames(
@@ -142,30 +96,27 @@ export class CLToggle extends React.Component {
 
     const inputType = type === 'toggle' || type === 'switch' ? 'checkbox' : type;
 
-    const ref = (c) => {
+    const toggleRef = (c) => {
       this.toggle = c;
     };
 
-    const labelAttributes = {
-      className,
-      htmlFor: idFor
-    };
-
-    const inputAttributes = {
-      type: inputType,
-      id: idFor,
-      name,
-      value,
-      className: inputClassName,
-      onChange: this.onChangeHandler,
-      ref
-    };
-
     return (
-      <label {...labelAttributes} >
-        <input {...inputAttributes} />
+      <label
+        className = {className}
+        htmlFor = {idFor}
+      >
+        <input
+          type = {inputType}
+          id = {idFor}
+          name = {name && typeof name === 'string' ? name : null}
+          value = {value && typeof value === 'string' ? value : null}
+          className = {inputClassName}
+          ref = {toggleRef}
+        />
         {this.renderLabel(type, label, materialIcon)}
       </label>
     );
   }
 }
+
+export default Toggle;
