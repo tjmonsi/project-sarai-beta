@@ -1,21 +1,24 @@
 import React from 'react';
 import classNames from 'classnames';
+import markedOriginal from 'marked';
 import {classList, prefix} from './../../libs';
 
-export class CLCardClickableBody extends React.Component {
+export class CLMarkdownRenderer extends React.Component {
   render() {
     const {
-      cardHref: href = '#',
-      cardActionHandler: onClick,
+      markdown = '',
+      marked = markedOriginal,
+      renderer,
+      useRenderer = true,
       hideOnLargeScreen,
       hideOnSmallScreen,
       classes,
       addClasses,
-      id,
-      children
+      id
     } = this.props;
-    const defaultClass = `${prefix}-card-clickable-body`;
+    const defaultClass = `${prefix}-spacer`;
     const className = classNames(
+      'mdl-layout-spacer',
       {
         'mdl-layout--small-screen-only': hideOnLargeScreen,
         'mdl-layout--large-screen-only': hideOnSmallScreen
@@ -24,22 +27,16 @@ export class CLCardClickableBody extends React.Component {
       classList(classes, defaultClass),
       classList(addClasses, defaultClass)
     );
+    const dangerouslySetInnerHTML = {
+      __html: marked(markdown, { renderer: useRenderer ? renderer : null})
+    };
     const attributes = {
+      dangerouslySetInnerHTML,
       className,
-      id,
-      onClick,
-      href
+      id
     };
     return (
-      <a {...attributes} >
-        {
-          React.Children.map(children, child => (typeof child === 'string' ? child :
-            React.cloneElement(child, {
-              classes
-            })
-          ))
-        }
-      </a>
+      <div {...attributes}></div>
     );
   }
 }

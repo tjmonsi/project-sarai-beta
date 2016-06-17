@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default (PageCtx, {page, mount, marked, renderer}, {Components, links}) => {
+export default (PageCtx, {page, mount}, {Components, links}) => {
   const {
     CLLayout,
     CLHeader,
@@ -13,6 +13,7 @@ export default (PageCtx, {page, mount, marked, renderer}, {Components, links}) =
     CLGrid,
     CLMarkdownEditor,
     CLForm,
+    CLList,
     CLSlider,
     CLToggle,
     CLCard,
@@ -20,33 +21,20 @@ export default (PageCtx, {page, mount, marked, renderer}, {Components, links}) =
     CLCardTitle,
     CLCardText,
     CLCardAction,
-    CLButton,
-    CLSnackbar,
-    CLMarkdownRenderer
+    CLButton
   } = Components;
 
-  let snackbar;
-
-  const snackbarRef = (c) => {
-    snackbar = c;
-  };
-
-  const text = `# Hello world
-  this is a text | this is a long text | text 3
-  --- | :---: | :---
-  text | text2 | xyz
-
-  [link](link)
-  `;
-
-  page('/comp-lib-v2', () => {
+  page('/blogger', () => {
     mount(PageCtx, {
       content: (
         <CLLayout classes="this-additional-class">
           <CLHeader>
             <CLHeaderRow>
               <CLSpacer hideOnLargeScreen="true" />
-              <CLLogo />
+              <CLLogo image="http://image000.flaticon.com/teams/1-freepik.jpg"
+                width="100px"
+                length="100px"
+              />
               <CLSpacer />
               <CLNav links={links} />
             </CLHeaderRow>
@@ -56,27 +44,33 @@ export default (PageCtx, {page, mount, marked, renderer}, {Components, links}) =
             <CLNav links={links} />
           </CLDrawer>
           <CLBody>
-            <CLMarkdownRenderer
-              markdown={text} marked={marked}
-              renderer={renderer}
-              useRenderer={true}
-            />
-
-            <CLButton actionHandler={() => {if (snackbar) {snackbar.showNotification('Hello')}}} />
-            <CLGrid columns={2} forceSingleColumnPhone={true}>
-              <CLCard width={300}>
-                <CLCardThumbnailBody>
-                  <CLCardTitle title="title" subTitle="This is something"/>
-                  <CLCardText>
-                    <p>
-                      Hello this is a body of text
-                    </p>
-                  </CLCardText>
-                  <CLCardAction>
-                    <CLButton />
-                  </CLCardAction>
-                </CLCardThumbnailBody>
-              </CLCard>
+            <CLGrid columns={3}>
+                <CLCard width={400}>
+                    <CLCardThumbnailBody>
+                      <CLCardTitle title="Blog Title" subTitle="Definitely, no?"/>
+                      <CLCardText>
+                        <p>
+                          Lorem ipsum here. This card has no actions
+                        </p>
+                      </CLCardText>
+                      <CLCardAction>
+                        <CLButton />
+                      </CLCardAction>
+                    </CLCardThumbnailBody>
+                </CLCard>
+                <CLCard width={400}>
+                    <CLCardThumbnailBody>
+                      <CLCardTitle title="Blog Title 2" subTitle="Yep List.Card[1]"/>
+                      <CLCardText>
+                        <p>
+                          Sneak a peek here. This card has no actions too
+                        </p>
+                      </CLCardText>
+                      <CLCardAction>
+                        <CLButton />
+                      </CLCardAction>
+                    </CLCardThumbnailBody>
+                </CLCard>
               <CLForm
                 onChangeDispatch={(data) => {console.log(data)}}
                 data = {{
@@ -99,7 +93,6 @@ export default (PageCtx, {page, mount, marked, renderer}, {Components, links}) =
               </CLForm>
             </CLGrid>
           </CLBody>
-          <CLSnackbar ref={snackbarRef}/>
         </CLLayout>
       )
     });
