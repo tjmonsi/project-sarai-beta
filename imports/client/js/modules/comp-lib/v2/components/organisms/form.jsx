@@ -1,7 +1,16 @@
 import React from 'react';
 import classNames from 'classnames';
-import {CLButton} from './../atoms';
+import {CLButton, CLSpacer} from './../atoms';
 import {classList, prefix} from './../../libs';
+
+/**
+ * Adds a CLForm component.
+ * @param {string} [addClasses] Adds optional classes.
+ * @param {Object} [data] This is data that gets preloaded to the form. THis is helpful for when a user is updating and the form should already be populated.
+ * @param {string} [id]
+ * @param {Number} [shadow=0] Adds shadow to the form border. The only valid inputs are 0, 2, 3, 4, 8, and 16. See [Elevation and shadows](https://material.google.com/what-is-material/elevation-shadows.html) in the Google Material Design Spec.
+ *
+ */
 
 export class CLForm extends React.Component {
   constructor() {
@@ -9,6 +18,7 @@ export class CLForm extends React.Component {
     this.sections = {};
     this.data = {};
     this.onChangeHandler = this.onChangeHandler.bind(this);
+    this.onActionHandler = this.onActionHandler.bind(this);
     this.inputRef = this.inputRef.bind(this);
   }
   inputRef(c, name) {
@@ -18,6 +28,39 @@ export class CLForm extends React.Component {
     const {onChangeDispatch = () => {}} = this.props;
     this.data[name] = value;
     onChangeDispatch(this.data);
+  }
+  onActionHandler(actionHandler = () => {}, data) {
+    actionHandler(data);
+  }
+  renderButtons() {
+    const {
+      classes,
+      addClasses,
+      data,
+      actionHandlers
+    } = this.props;
+    return actionHandlers ? actionHandlers.map((actionHandlerObject, key) => {
+      const {
+        spacer,
+        actionHandler
+      } = actionHandlerObject;
+      const attributes = {
+        classes,
+        addClasses,
+        key
+      };
+      const actionAttribute = {
+        actionHandler: () => {
+          this.onActionHandler(actionHandler, data);
+        }
+      };
+      return spacer ? (
+        <CLSpacer {...Object.assign({}, attributes, actionHandlerObject)} />
+      ) :
+      (
+        <CLButton {...Object.assign({}, attributes, actionHandlerObject, actionAttribute)} />
+      );
+    }) : null;
   }
   renderSections() {
     const {data = {}, sections, classes} = this.props;
@@ -60,6 +103,14 @@ export class CLForm extends React.Component {
       className,
       id
     };
+    const actionListClassname = classNames(
+      `${defaultClass}-action`,
+      classList(classes, `${defaultClass}-action`),
+      classList(addClasses, `${defaultClass}-action`)
+    );
+    const actionListAttributes = {
+      className: actionListClassname
+    };
     return (
       <div {...attribtues} >
         {
@@ -72,6 +123,9 @@ export class CLForm extends React.Component {
             })
           ))
         }
+        <div {...actionListAttributes} >
+          {this.renderButtons()}
+        </div>
       </div>
     );
   }
