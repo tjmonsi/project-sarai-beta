@@ -19,8 +19,11 @@ export class CLGrid extends React.Component {
       classes,
       addCellClasses,
       forceSingleColumnPhone,
+      snackbar
     } = this.props;
+
     const defaultClass = `${prefix}-cell`;
+
     const className = classNames(
       'mdl-cell',
       {
@@ -58,30 +61,48 @@ export class CLGrid extends React.Component {
     };
     return (
       <div {...attributes} >
-        { typeof child === 'string' ? React.cloneElement(child, {classes}) : child }
+        { typeof child === 'string' ? React.cloneElement(child, {classes, snackbar}) : child }
       </div>
     );
   }
-  renderGrid(children, columns) {
-    let index = 0;
-    const size = React.Children.count(children);
-    return React.Children.map(this.props.children, child => {
-      return this.renderCell(child, columns, size, index++);
-    });
-  }
   render() {
+
+    // Params
+
     const {
+
+      // general params
+
+      id,
+      generalClassName,
+      specificClassName,
+      style,
+      cellStyle,
+      children,
+      snackbar,
       hideOnLargeScreen,
       hideOnSmallScreen,
-      noSpacing = false,
+
+      // other params
+
       columns = 1,
-      classes,
-      addClasses,
-      id,
-      children
+      forceSingleColumnPhone = false,
+      noSpacing = false
     } = this.props;
+
+    // Other imports and initialization
     const maxColumns = columns >= 4 ? 4 : columns;
+
+    // ID manipulation
+
+    // Default Class
+
     const defaultClass = `${prefix}-grid`;
+
+    // Children manipulation and checking
+
+    // Classnames
+
     const className = classNames(
       'mdl-grid',
       {
@@ -90,16 +111,100 @@ export class CLGrid extends React.Component {
         'mdl-layout--large-screen-only': hideOnSmallScreen
       },
       defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      classList(generalClassName, 'grid'),
+      specificClassName
     );
+
+    // Styles
+
+    // Refs
+
+    // Attributes
+
     const attributes = {
+      id,
       className,
-      id
+      style
     };
+
+    // Functions
+
+    const renderCell = (child, c, size, key) => {
+
+      // Classnames
+
+      const cellClassName = classNames(
+        'mdl-cell',
+        {
+          'mdl-cell--12-col': c === 1,
+          'mdl-cell--6-col-desktop': c === 2,
+          'mdl-cell--4-col-desktop':
+            c === 3 ||
+            (c === 4 && size % 4 === 1 && key === size - 1) ||
+            (c === 4 && size % 4 === 3 && key === size - 2),
+          'mdl-cell--3-col-desktop':
+            c === 4 &&
+            !(size % 4 === 1 && key === size - 1) &&
+            !(size % 4 === 3 && key === size - 2),
+          'mdl-cell--4-col-tablet': c >= 2,
+          'mdl-cell--2-col-phone': c >= 2 && !forceSingleColumnPhone,
+          'mdl-cell--4-col-phone': c >= 2 && forceSingleColumnPhone,
+          'mdl-cell--3-offset-desktop':
+            (c === 2 && size % 2 === 1 && key === size - 1) ||
+            (c === 4 && size % 4 === 2 && key === size - 2),
+          'mdl-cell--4-offset-desktop':
+            (c === 3 && size % 3 === 1 && key === size - 1) ||
+            (c === 4 && size % 4 === 1 && key === size - 1),
+          'mdl-cell--2-offset-desktop': c === 3 && size % 3 === 2 && key === size - 2,
+          'mdl-cell--1-offset-desktop': c === 4 && size % 4 === 3 && key === size - 3,
+          'mdl-cell--2-offset-tablet': c >= 2 && size % 2 === 1 && key === size - 1,
+          'mdl-cell--1-offset-phone': c >= 2 && size % 2 === 1 && key === size - 1
+        },
+        `${defaultClass}-cell`,
+        classList(generalClassName, 'cell'),
+        classList(specificClassName, 'cell')
+      );
+
+      // Styles
+
+      // Refs
+
+      // Attributes
+
+      const cellAttributes = {
+        id: id && typeof id === 'string' ? `${id}-${key}` : null,
+        className: cellClassName,
+        style: cellStyle,
+        key
+      };
+
+      return (
+        <div {...cellAttributes} >
+          {
+            typeof child !== 'string' ?
+              React.cloneElement(child, {
+                generalClassName,
+                snackbar
+              }) : child
+          }
+        </div>
+      );
+
+
+    };
+
+    const renderGrid = (c) => {
+      const size = React.Children.count(children);
+      return size > 1 ? children.map((child, key) =>
+        (renderCell(child, c, size, key))) :
+        renderCell(children, c, size, 0);
+    };
+
+    // Render return
+
     return (
       <div {...attributes} >
-        { this.renderGrid(children, maxColumns) }
+        { renderGrid(maxColumns) }
       </div>
     );
   }

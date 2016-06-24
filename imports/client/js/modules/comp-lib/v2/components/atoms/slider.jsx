@@ -1,22 +1,23 @@
 import React from 'react';
 import classNames from 'classnames';
+import random from 'random-js';
 import {classList, prefix} from './../../libs';
 
 /**
  * Adds a CLSlider component.
- * @param {string} [addClasses] Adds optional classes.
- * @param {Object} [data] Preloads the slider with a value.
- * @param {Boolean} [isDisabled=false]
- * @param {Boolean} [hideOnLargeScreen=false]
- * @param {Boolean} [hideOnSmallScreen=false]
- * @param {string} [id]
+ * @param {string}   [addClasses] Adds optional classes.
+ * @param {Object}   [data] Preloads the slider with a value.
+ * @param {Boolean}  [isDisabled=false]
+ * @param {Boolean}  [hideOnLargeScreen=false]
+ * @param {Boolean}  [hideOnSmallScreen=false]
+ * @param {string}   [id]
  * @param {Function} [inputRef]
- * @param {Number} [max=100] Sets the upper boundary of the slider.
- * @param {Number} [min=0] Sets the lower boundery of the slider.
- * @param {string} [name]
- * @param {Number} [step] Specifies the increment the slider would move with.
- * @param {Number} [tabIndex=0]
- * @param {Number} [width=300] Specifies the width in px. Input a string if you want to use percentage e.g. "500%".
+ * @param {Number}   [max=100] Sets the upper boundary of the slider.
+ * @param {Number}   [min=0] Sets the lower boundery of the slider.
+ * @param {string}   [name]
+ * @param {Number}   [step] Specifies the increment the slider would move with.
+ * @param {Number}   [tabIndex=0]
+ * @param {Number}   [width=300] Specifies the width in px. Input a string if you want to use percentage e.g. "500%".
  *
  */
 
@@ -36,14 +37,22 @@ export class CLSlider extends React.Component {
   }
   updateForm() {
     const {
-      data,
+      data = {},
       name,
       inputRef = () => {}
     } = this.props;
+
+    if (componentHandler) {
+      componentHandler.upgradeElement(this.slider);
+    }
+
     if (data[name]) {
       this.setValue(data[name]);
     }
     inputRef(this, name);
+
+
+
     this.onChangeHandler();
   }
   setValue(value) {
@@ -66,23 +75,44 @@ export class CLSlider extends React.Component {
     onChangeHandler(this.slider.value, name, e, this.slider);
   }
   render() {
+    const r = random();
+
+    // Params
+
     const {
-      step = 1,
-      min = 0,
-      max = 100,
-      tabIndex = 0,
-      isDisabled = false,
-      width = 300,
-      name,
-      inputRef = () => {},
-      data,
+
+      // general params
+
+      id = `slider-${r.string(10)}`,
+      generalClassName,
+      specificClassName,
+      style,
       hideOnLargeScreen,
       hideOnSmallScreen,
-      classes,
-      addClasses,
-      id
+
+      // other params
+
+      isDisabled = false,
+      max = 100,
+      min = 0,
+      name,
+      step = 1,
+      tabIndex = 0,
+      width = 300,
     } = this.props;
+
+    // Other imports and initialization
+
+    // ID manipulation
+
+    // Default Class
+
     const defaultClass = `${prefix}-slider`;
+
+    // Children manipulation and checking
+
+    // Classnames
+
     const className = classNames(
       'mdl-slider mdl-js-slider',
       {
@@ -90,30 +120,44 @@ export class CLSlider extends React.Component {
         'mdl-layout--large-screen-only': hideOnSmallScreen
       },
       defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      classList(generalClassName, 'slider'),
+      specificClassName
     );
+
+    // Styles
+
+    // Refs
+
     const ref = (c) => {
       this.slider = c;
     };
+
+    // Attributes
+
     const pAttributes = {
       style: {
         width
       }
     };
     const attributes = {
-      className,
       id,
-      type: 'range',
-      min,
-      max,
-      tabIndex,
-      step,
+      className,
       isDisabled,
+      max,
+      min,
       name,
+      onChange: this.onChangeHandler,
       ref,
-      onChange: this.onChangeHandler
+      step,
+      tabIndex,
+      type: 'range',
+      style
     };
+
+    // Functions
+
+    // Render return
+
     return (
       <p {...pAttributes}>
         <input {...attributes} >

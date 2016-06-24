@@ -1,47 +1,57 @@
 import React from 'react';
 import classNames from 'classnames';
+import random from 'random-js';
 import {classList, prefix} from './../../libs';
 
 /**
  * Adds a CLLogo component.
- * @param {string} [addClasses] Adds optional classes.
+ * @param {string}  [addClasses] Adds optional classes.
  * @param {Boolean} [hideOnLargeScreen=false]
  * @param {Boolean} [hideOnSmallScreen=false]
- * @param {string} [id]
- * @param {string} [image] Specifies the image URL.
- * @param {string} [label="Logo"]
- * @param {string} [url="/"] Specifies the URL the Logo would redirect to once clicked.
+ * @param {string}  [id]
+ * @param {string}  [image] Specifies the image URL.
+ * @param {string}  [label="Logo"]
+ * @param {string}  [url="/"] Specifies the URL the Logo would redirect to once clicked.
  */
 
 export class CLLogo extends React.Component {
-  renderTitle() {
-    const {image, label} = this.props;
-    if (image) {
-      return (
-        <img
-          src={image}
-          alt={label}
-        />
-      );
-    }
-    return (
-      <h1>
-        {label && typeof label === 'string' ? label : 'Logo'}
-      </h1>
-    );
-  }
   render() {
+    const r = random();
+
+    // Params
+
     const {
-      url = '/',
-      image,
-      label = 'Logo',
+
+      // general params
+
+      id = `logo-${r.string(10)}`,
+      generalClassName,
+      specificClassName,
+      style,
+      snackbar,
       hideOnLargeScreen,
       hideOnSmallScreen,
-      classes,
-      addClasses,
-      id
+
+      // other params
+
+      image,
+      imageHeight = 30,
+      label = 'Logo',
+      url = '/',
     } = this.props;
+
+    // Other imports and initialization
+
+    // ID manipulation
+
+    // Default Class
+
     const defaultClass = `${prefix}-logo`;
+
+    // Children manipulation and checking
+
+    // Classnames
+
     const className = classNames(
       'mdl-layout-title',
       {
@@ -49,25 +59,42 @@ export class CLLogo extends React.Component {
         'mdl-layout--large-screen-only': hideOnSmallScreen
       },
       defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      classList(generalClassName, 'logo'),
+      specificClassName
     );
+
+    // Styles
+
+    // Refs
+
+    // Attributes
+
     const attributes = {
+      id,
       className,
-      id
+      style
     };
 
     const imageAttribtues = {
+      alt: label,
       src: image,
-      alt: label
+      style: {
+        height: imageHeight
+      }
     };
+
+    // Functions
+
+    // Render return
 
     return (
       <span {...attributes} >
         <a href={url}>
           {
-            image && typeof image === 'string' ? (<img {...imageAttribtues} />) :
-              (<h1>{label}</h1>)
+            image && typeof image === 'string' ? (<img {...imageAttribtues} />) : null
+          }
+          {
+            label && typeof label === 'string' ? (<span>{label}</span>) : null
           }
         </a>
       </span>

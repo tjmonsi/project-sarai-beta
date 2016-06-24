@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import {CLButton} from './../atoms';
+import random from 'random-js';
 import {classList, prefix} from './../../libs';
 
 export class CLModal extends React.Component {
@@ -32,48 +33,95 @@ export class CLModal extends React.Component {
     }
   }
   render() {
+
+    // Params
+
+    const r = random();
+
+    // Params
+
     const {
-      width = '50%',
-      classes,
-      addClasses,
-      id,
-      children
+
+      // general params
+
+      id = `card-${r.string(10)}`,
+      generalClassName,
+      specificClassName,
+      style,
+      contentStyle,
+      children,
+      snackbar,
+
+      // other params
+
+      width = '50%'
     } = this.props;
+
+    // Other imports and initialization
+
+    // ID manipulation
+
+    // Default Class
+
     const defaultClass = `${prefix}-modal`;
+
+    // Children manipulation and checking
+
+    // Classnames
+
     const className = classNames(
       defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      classList(generalClassName, 'modal'),
+      specificClassName
     );
     // const closeClass = `${prefix}-close`;
     const contentClassName = classNames(
       `${defaultClass}-content`,
-      classList(classes, `${defaultClass}-content`),
-      classList(addClasses, `${defaultClass}-content`)
+      classList(generalClassName, 'content'),
+      classList(specificClassName, 'content')
     );
+
+    // Styles
+
+    const contentStyleEdited = Object.assign({}, {
+      width,
+      maxHeight: '90%',
+      overflow: 'auto'
+    }, contentStyle);
+
+    // Refs
+
     const ref = (c) => {
       this.modal = c;
     };
+
+    // Attributes
+
     const attributes = {
-      className,
       id,
+      className,
+      style,
       ref
     };
+
     const closeAttributes = {
-      materialIcon: 'close',
-      isIcon: true,
-      classes: `${classes} modal-close`,
+      id: id && typeof id === 'string' ? `${id}-modal-close` : null,
+      generalClassName: `${generalClassName} modal-close`,
+      specificClassName: classList(specificClassName, 'modal-close'),
       actionHandler: this.closeModal,
+      isIcon: true,
+      materialIcon: 'close',
       tooltip: 'close'
     };
+
     const contentAttributes = {
       className: contentClassName,
-      style: {
-        width,
-        maxHeight: '90%',
-        overflow: 'auto'
-      }
+      style: contentStyleEdited
     };
+
+    // Functions
+
+    // Render return
 
     return (
       <div {...attributes} >
@@ -82,8 +130,9 @@ export class CLModal extends React.Component {
           {
             React.Children.map(children, child => (typeof child === 'string' ? child :
               React.cloneElement(child, {
-                classes,
-                closeModal: this.closeModal
+                generalClassName,
+                closeModal: this.closeModal,
+                snackbar
               })
             ))
           }
